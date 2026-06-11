@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelADB Open API Console</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PixelADB</p>
+          <h1>Open API Console</h1>
+        </div>
+        <div class="status-pill" id="apiStatus">
+          <span class="status-dot"></span>
+          <span>Checking API proxy</span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="panel setup-panel" aria-labelledby="setupTitle">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Local Proxy</p>
+              <h2 id="setupTitle">Connection</h2>
+            </div>
+            <a class="link-button" href="https://okey188.com/api-docs" target="_blank" rel="noreferrer">Docs</a>
+          </div>
+
+          <label class="field">
+            <span>CDK</span>
+            <input id="cdkInput" type="password" autocomplete="off" placeholder="X-Pixel-CDK" />
+          </label>
+
+          <label class="check-row">
+            <input id="rememberCdk" type="checkbox" />
+            <span>Keep CDK in this browser session</span>
+          </label>
+
+          <div class="meta-grid">
+            <div>
+              <span>API Base</span>
+              <strong id="apiBase">-</strong>
+            </div>
+            <div>
+              <span>Server CDK</span>
+              <strong id="serverCdk">-</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel submit-panel" aria-labelledby="submitTitle">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">POST /tasks</p>
+              <h2 id="submitTitle">Submit Tasks</h2>
+            </div>
+            <select id="taskType" class="compact-select">
+              <option value="full_subscribe">12 month subscribe</option>
+              <option value="full_subscribe_24m">24 month subscribe</option>
+              <option value="extract_link">Extract link</option>
+            </select>
+          </div>
+
+          <textarea id="accountsInput" spellcheck="false" placeholder='[{"email":"user@example.com","password":"password","totp":"BASE32SECRET","recovery":""}]'></textarea>
+
+          <div class="button-row">
+            <button id="submitBtn" class="primary-btn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l18-9-6 18-4-7-8-2z"></path></svg>
+              Submit
+            </button>
+            <button id="sampleBtn" class="secondary-btn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"></path></svg>
+              Sample
+            </button>
+            <button id="clearBtn" class="ghost-btn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+              Clear
+            </button>
+          </div>
+        </section>
+
+        <section class="panel task-panel" aria-labelledby="taskTitle">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">GET /tasks/{id}</p>
+              <h2 id="taskTitle">Task Control</h2>
+            </div>
+            <label class="switch-row">
+              <input id="autoRefresh" type="checkbox" />
+              <span>Auto refresh</span>
+            </label>
+          </div>
+
+          <div class="task-query">
+            <input id="taskIdInput" type="number" min="1" placeholder="Task ID" />
+            <button id="queryBtn" class="secondary-btn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 18a8 8 0 1 1 5.7-2.3L21 21"></path></svg>
+              Query
+            </button>
+            <button id="cancelBtn" class="danger-btn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"></path></svg>
+              Cancel
+            </button>
+            <button id="retryBtn" class="secondary-btn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v6h6M20 20v-6h-6M6 17a7 7 0 0 0 11 1M18 7A7 7 0 0 0 7 6"></path></svg>
+              Retry
+            </button>
+          </div>
+
+          <div id="taskList" class="task-list" aria-live="polite"></div>
+        </section>
+
+        <section class="panel response-panel" aria-labelledby="responseTitle">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Response</p>
+              <h2 id="responseTitle">Latest Result</h2>
+            </div>
+            <button id="copyResponseBtn" class="ghost-btn icon-only" type="button" title="Copy response">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8h10v12H8zM6 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"></path></svg>
+            </button>
+          </div>
+          <pre id="responseOutput">{}</pre>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
