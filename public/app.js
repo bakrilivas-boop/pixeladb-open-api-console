@@ -10,7 +10,7 @@ const LOCAL_PROXY_HOSTS = new Set(["localhost", "127.0.0.1", "::1"]);
 const FORCE_PAGES_MODE = new URLSearchParams(window.location.search).get("mode") === "pages";
 const USE_LOCAL_PROXY = LOCAL_PROXY_HOSTS.has(window.location.hostname) && !FORCE_PAGES_MODE;
 const CORS_HELP =
-  "If this is running on GitHub Pages, ask the PixelADB server owner to add this Pages domain to CORS_ORIGINS.";
+  `If this is running on GitHub Pages, ask the PixelADB server owner to add ${window.location.origin} to CORS_ORIGINS.`;
 
 const els = {
   apiStatus: document.querySelector("#apiStatus"),

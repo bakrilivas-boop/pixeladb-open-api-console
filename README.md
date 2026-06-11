@@ -31,6 +31,12 @@ If `PIXEL_CDK` is blank, enter the CDK in the browser. The browser sends it only
 
 ## Publish With GitHub Pages
 
+Current public deployment:
+
+```text
+https://bakrilivas-boop.github.io/pixeladb-open-api-console/
+```
+
 This repository includes `.github/workflows/pages.yml`. After pushing to GitHub:
 
 1. Open the repository on GitHub.
@@ -52,7 +58,7 @@ https://okey188.com/api/v1/open
 directly from the browser. The PixelADB API currently rejects unapproved browser origins with `Disallowed CORS origin`, so the API owner must add your GitHub Pages domain to `CORS_ORIGINS`, for example:
 
 ```text
-https://<user>.github.io
+https://bakrilivas-boop.github.io
 ```
 
 Without that allowlist change, the page will be online, but task submit/query/cancel/retry calls will be blocked by the browser.
